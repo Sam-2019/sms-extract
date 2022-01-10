@@ -98,13 +98,13 @@ const purchase = (data) => {
 	};
 };
 
-export const send = (data) => {
+const send = (data) => {
 	let amounts = data.match(amount_pattern);
 	let trnx_id = data.match(trxn_id_pattern);
 	let payment_to = data.match(to_pattern);
 	let reference = data.match(reference_pattern);
-	let time = data.match(time_pattern) || null;
-	let date = data.match(date_pattern) || null;
+	let time = data.match(time_pattern);
+	let date = data.match(date_pattern);
 	let send_amount = amounts[0];
 	let current_balance = amounts[1];
 	let available_balance = amounts[2];
@@ -119,8 +119,8 @@ export const send = (data) => {
 		available_balance: available_balance,
 		fee_charged: fee_charged,
 		reference: String(reference).substring(11),
-		time: String(time),
-		date: String(date).substring(3),
+		time: String(time).length < 8 ? null : String(time),
+		date: String(date).length < 10 ? null : String(date).substring(3).trim(),
 		to: String(payment_to).includes("-")
 			? String(payment_to).slice(9)
 			: String(payment_to).slice(7),
