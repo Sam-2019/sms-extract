@@ -42,7 +42,7 @@ const withdrawal = (data) => {
 	};
 };
 
-export const receipt = (data) => {
+const receipt = (data) => {
 	let amounts = data.match(amount_pattern);
 
 	if (amounts === null) {
@@ -53,7 +53,7 @@ export const receipt = (data) => {
 	let current_balance = amounts[1];
 	let available_amount = amounts[2] || null;
 	let trnx_id = data.match(trxn_id_pattern);
-	let from = data.match(from_pattern) || null;
+	let from = data.match(from_pattern);
 	let message = data.match(messsage_pattern);
 
 	return {
