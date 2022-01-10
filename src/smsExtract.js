@@ -18,7 +18,7 @@ const time_pattern = /(([0-9]+\:[0-9]+\:[0-9]+)\.)/gim;
 const messsage_pattern =
 	/Message:Interest.?[a-z]+.?(\w+)?.(\w+)?.(\w+)?.([0-9]+)?/g;
 
-export const withdrawal = (data) => {
+const withdrawal = (data) => {
 	let amounts = data.match(amount_pattern);
 
 	if (amounts === null) {
