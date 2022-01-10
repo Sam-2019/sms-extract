@@ -1,6 +1,6 @@
-# Getting Started with Create React App
+# smsExtract
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Pass in MTN momo sms to extract useful data.
 
 ## Available Scripts
 
