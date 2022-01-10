@@ -4,7 +4,8 @@ const trxn_id_pattern = /Transaction I(d|D): \d+/gm;
 //eslint-disable-next-line
 const amount_pattern = /GHS ?[0-9]+.[0-9]+?./gm || /GHS.?[0-9]+(.([0-9]+))/gi;
 //eslint-disable-next-line
-const from_pattern =/.[0-9]+.?from.?([a-z]+.?[a-z]+.?[a-z]+.?[a-z]+.?[a-z]+.?[a-z]+)/gim;
+const from_pattern =
+	/.[0-9]+.?from.?([a-z]+.?[a-z]+.?[a-z]+.?[a-z]+.?[a-z]+.?[a-z]+)/gim;
 //eslint-disable-next-line
 const to_pattern = /\.[0-9]+.?to.?\-?\W?(\w+.?\w+.?\w+.?[A-Zz]+.?)?/gim;
 //eslint-disable-next-line
@@ -53,16 +54,16 @@ export const receipt = (data) => {
 	let available_amount = amounts[2] || null;
 	let trnx_id = data.match(trxn_id_pattern);
 	let from = data.match(from_pattern) || null;
-	let message = data.match(messsage_pattern) ;
+	let message = data.match(messsage_pattern);
 
 	return {
 		Receipt: data,
 
 		receipt_amount: receipt_amount,
 		current_balance: current_balance,
-		available_amount: available_amount ,
+		available_amount: available_amount,
 		trnx_id: String(trnx_id[0]).slice(16),
-		from: String(from).substring(9) ,
+		from: from ? String(from).substring(9) : null,
 		message: message ? String(message).substring(8) : null,
 	};
 };
