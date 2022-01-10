@@ -68,7 +68,7 @@ const receipt = (data) => {
 	};
 };
 
-export const purchase = (data) => {
+const purchase = (data) => {
 	let amounts = data.match(amount_pattern);
 
 	if (amounts === null) {
@@ -81,8 +81,8 @@ export const purchase = (data) => {
 	let trnx_id = data.match(trxn_id_pattern);
 	let payment_to = data.match(to_pattern);
 	let reference = data.match(reference_pattern);
-	let time = data.match(time_pattern) || null;
-	let date = data.match(date_pattern) || null;
+	let time = data.match(time_pattern);
+	let date = data.match(date_pattern);
 
 	return {
 		Purchase: data,
@@ -93,8 +93,8 @@ export const purchase = (data) => {
 		fee_charged: fee_charged,
 		to: String(payment_to).slice(7),
 		reference: String(reference).substring(11),
-		time: String(time),
-		date: String(date).substring(3),
+		time: time ? String(time) : null,
+		date: date ? String(date).substring(3).trim() : null,
 	};
 };
 
