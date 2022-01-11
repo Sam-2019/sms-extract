@@ -39,6 +39,10 @@ function App() {
 		setNotify(false);
 	};
 
+	const close = () => {
+		setOutput(false);
+	};
+
 	return (
 		<div className="container">
 			<div className="bg-white p-4">
@@ -87,7 +91,7 @@ function App() {
 									className={`rounded-md bg-red-500 w-auto text-sm px-4 py-2 text-base font-medium text-white inline-flex justify-center focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 ${
 										!state ? `bg-red-400` : `hover:bg-red-700`
 									}`}
-									onClick={() => setOutput(false)}
+									onClick={close}
 								>
 									Close
 								</button>
