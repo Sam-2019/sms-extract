@@ -1,4 +1,13 @@
 //regex
+//eslint-disable-next-line
+const trxn_id_pattern = /Trans I(d|D):.?([a-z]+\d*).(\d*).([a-z]+\d*)/gim;
+//eslint-disable-next-line
+const ref_no_pattern = /(Ref No).?:(\d*)/gim;
+//eslint-disable-next-line
+const amount_pattern = /GHS.?.?[0-9]+(.([0-9]+))/gi;
+//eslint-disable-next-line
+const from_pattern = /(from).?(\d*)/gim;
+
 
 const withdrawal = (data) => {
 	console.log({ Withdrawal: data });
