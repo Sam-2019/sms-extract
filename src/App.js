@@ -28,6 +28,7 @@ function App() {
 	const clear = () => {
 		setState("");
 		setOutput(false);
+		setNotify(false)
 	};
 
 	const handleOnChange = (e) => {
