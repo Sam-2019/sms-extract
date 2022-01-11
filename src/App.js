@@ -84,7 +84,9 @@ function App() {
 							<div className="mt-2 flex justify-end content-end">
 								<button
 									disabled={!state ? true : false}
-									className="rounded-md bg-red-500 w-auto text-sm px-4 py-2 text-base font-medium text-white inline-flex justify-center hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
+									className={`rounded-md bg-red-500 w-auto text-sm px-4 py-2 text-base font-medium text-white inline-flex justify-center focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 ${
+										!state ? `bg-red-400` : `hover:bg-red-700`
+									}`}
 									onClick={() => setOutput(false)}
 								>
 									Close
