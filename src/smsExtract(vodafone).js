@@ -103,6 +103,35 @@ const receipt = (data) => {
 
 const purchase = (data) => {
 	console.log({ Purchase: data });
+
+	let trnx_id = data.match(trxn_id_pattern);
+	let for_number = data.match(for_number_pattern);
+	let for_name = data.match(for_name_pattern);
+	let time = data.match(time_pattern);
+	let date = data.match(date_pattern);
+	let amounts = data.match(amount_pattern);
+	let purchase_amount = amounts ? amounts[0] : null;
+	let current_balance = amounts ? amounts[1] : null;
+
+	// console.log({ purchase_amount: purchase_amount });
+	// console.log({ current_balance: current_balance });
+	// console.log({ trnx_id: String(trnx_id[0]) });
+	// console.log({ time: time ? String(time) : null });
+	// console.log({ date: date ? String(date).trim() : null });
+	// console.log({
+	// 	for_number: for_number ? String(for_number).substring(4) : null,
+	// });
+	// console.log({ for_name: for_name ? String(for_name).substring(3) : null });
+
+	return {
+		purchase_amount: purchase_amount,
+		current_balance: current_balance,
+		trnx_id: String(trnx_id[0]),
+		time: time ? String(time) : null,
+		date: date ? String(date).trim() : null,
+		for_number: for_number ? String(for_number).substring(4) : null,
+		for_name: for_name ? String(for_name).substring(3) : null,
+	};
 };
 
 const send = (data) => {
