@@ -26,12 +26,12 @@ const withdrawal = (data) => {
 	let available_balance = amounts ? amounts[3] : null;
 	let fee_charged = amounts ? amounts[1] : null;
 
-	console.log({ withdrawal_amount: withdrawal_amount });
-	console.log({ current_balance: current_balance });
-	console.log({ available_balance: available_balance });
-	console.log({ fee_charged: fee_charged });
-	console.log({ trnx_id: String(trnx_id[0]) });
-	console.log({ from: from ? String(from).substring(5) : null });
+	// console.log({ withdrawal_amount: withdrawal_amount });
+	// console.log({ current_balance: current_balance });
+	// console.log({ available_balance: available_balance });
+	// console.log({ fee_charged: fee_charged });
+	// console.log({ trnx_id: String(trnx_id[0]) });
+	// console.log({ from: from ? String(from).substring(5) : null });
 
 	return {
 		Withdrawal: data,
@@ -56,12 +56,12 @@ const receipt = (data) => {
 	let current_balance = amounts ? amounts[1] : null;
 	let available_balance = amounts ? amounts[2] : null;
 
-	console.log({ receipt_amount: receipt_amount });
-	console.log({ current_balance: current_balance });
-	console.log({ available_balance: available_balance });
-	console.log({ trnx_id: String(trnx_id[0]) });
-	console.log({ reference_no: String(reference_no[0]) });
-	console.log({ from: from ? `0${String(from).substring(5)}` : null });
+	// console.log({ receipt_amount: receipt_amount });
+	// console.log({ current_balance: current_balance });
+	// console.log({ available_balance: available_balance });
+	// console.log({ trnx_id: String(trnx_id[0]) });
+	// console.log({ reference_no: String(reference_no[0]) });
+	// console.log({ from: from ? `0${String(from).substring(5)}` : null });
 
 	return {
 		Receipt: data,
@@ -94,14 +94,14 @@ const send = (data) => {
 	let available_balance = amounts ? amounts[3] : null;
 	let fee_charged = amounts ? amounts[1] : null;
 
-	console.log({ send_amount: send_amount });
-	console.log({ current_balance: current_balance });
-	console.log({ available_balance: available_balance });
-	console.log({ fee_charged: fee_charged });
-	console.log({ trnx_id: String(trnx_id[0]) });
-	console.log({ ghipps_id: String(ghipps[0]) });
-	console.log({ to_name: String(to_name[0]).substring(3) });
-	console.log({ to_number: String(to_number[0]).substring(20) });
+	// console.log({ send_amount: send_amount });
+	// console.log({ current_balance: current_balance });
+	// console.log({ available_balance: available_balance });
+	// console.log({ fee_charged: fee_charged });
+	// console.log({ trnx_id: String(trnx_id[0]) });
+	// console.log({ ghipps_id: String(ghipps[0]) });
+	// console.log({ to_name: String(to_name[0]).substring(3) });
+	// console.log({ to_number: String(to_number[0]).substring(20) });
 
 	return {
 		Send: data,
