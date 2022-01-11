@@ -1,6 +1,6 @@
 import "./App.css";
-import { useState } from "react";
-import { check } from "./smsExtract";
+import { useState, useEffect } from "react";
+import { check } from "./smsExtract(at)";
 
 function App() {
 	const [state, setState] = useState("");
@@ -42,6 +42,24 @@ function App() {
 	const close = () => {
 		setOutput(false);
 	};
+
+	useEffect(() => {
+		let didCancel = false;
+
+		const close = () => {
+			if (!state) {
+				return setOutput(false);
+			}
+		};
+
+		if (!didCancel) {
+			close();
+		}
+
+		return () => {
+			didCancel = true;
+		};
+	});
 
 	return (
 		<div className="container">
