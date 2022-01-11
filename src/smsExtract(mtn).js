@@ -43,7 +43,7 @@ const receipt = (data) => {
 
 	let receipt_amount = amounts ? amounts[0] : null;
 	let current_balance = amounts ? amounts[1] : null;
-	let available_amount = amounts ? amounts[2] : null;
+	let available_balance = amounts ? amounts[2] : null;
 	let trnx_id = data.match(trxn_id_pattern);
 	let from = data.match(from_pattern);
 	let message = data.match(messsage_pattern);
@@ -53,7 +53,7 @@ const receipt = (data) => {
 
 		receipt_amount: receipt_amount,
 		current_balance: current_balance,
-		available_amount: available_amount,
+		available_balance: available_balance,
 		trnx_id: String(trnx_id[0]).slice(16),
 		from: from ? String(from).substring(9) : null,
 		message: message ? String(message).substring(8) : null,
