@@ -107,6 +107,39 @@ const purchase = (data) => {
 
 const send = (data) => {
 	console.log({ Send: data });
+
+	let trnx_id = data.match(trxn_id_pattern);
+	let to_number = data.match(to_number_pattern);
+	let to_name = data.match(to_name_pattern);
+	let time = data.match(time_pattern);
+	let date = data.match(date_pattern);
+	let amounts = data.match(amount_pattern);
+	let reference = data.match(reference_pattern);
+	let sent_amount = amounts ? amounts[0] : null;
+	let fee_charged = amounts ? amounts[1] : null;
+	let current_balance = amounts ? amounts[2] : null;
+
+	// console.log({ trnx_id: String(trnx_id) });
+	// console.log({ to_number: to_number ? String(to_number).substring(3) : null });
+	// console.log({ to_name: to_name ? to_name[3] : null });
+	// console.log({ time: time ? String(time) : null });
+	// console.log({ date: date ? String(date).trim() : null });
+	// console.log({ sent_amount: sent_amount });
+	// console.log({ fee_charged: fee_charged });
+	// console.log({ current_balance: current_balance });
+	// console.log({ reference: String(reference).substring(11) });
+
+	return {
+		trnx_id: String(trnx_id),
+		to_number: to_number ? String(to_number).substring(3) : null,
+		to_name: to_name ? to_name[3] : null,
+		time: time ? String(time) : null,
+		date: date ? String(date).trim() : null,
+		sent_amount: sent_amount,
+		fee_charged: fee_charged,
+		current_balance: current_balance,
+		reference: String(reference).substring(11),
+	};
 };
 
 export const check = (data) => {
