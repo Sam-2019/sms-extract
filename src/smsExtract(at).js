@@ -32,6 +32,17 @@ const withdrawal = (data) => {
 	console.log({ fee_charged: fee_charged });
 	console.log({ trnx_id: String(trnx_id[0]) });
 	console.log({ from: from ? String(from).substring(5) : null });
+
+	return {
+		Withdrawal: data,
+
+		withdrawal_amount: withdrawal_amount,
+		current_balance: current_balance,
+		available_balance: available_balance,
+		fee_charged: fee_charged,
+		trnx_id: String(trnx_id[0]),
+		from: from ? String(from).substring(5) : null,
+	};
 };
 
 const receipt = (data) => {
@@ -51,6 +62,17 @@ const receipt = (data) => {
 	console.log({ trnx_id: String(trnx_id[0]) });
 	console.log({ reference_no: String(reference_no[0]) });
 	console.log({ from: from ? `0${String(from).substring(5)}` : null });
+
+	return {
+		Receipt: data,
+
+		receipt_amount: receipt_amount,
+		current_balance: current_balance,
+		available_balance: available_balance,
+		trnx_id: String(trnx_id[0]),
+		reference_no: String(reference_no[0]),
+		from: from ? `0${String(from).substring(5)}` : null,
+	};
 };
 
 const purchase = (data) => {
@@ -80,6 +102,19 @@ const send = (data) => {
 	console.log({ ghipps_id: String(ghipps[0]) });
 	console.log({ to_name: String(to_name[0]).substring(3) });
 	console.log({ to_number: String(to_number[0]).substring(20) });
+
+	return {
+		Receipt: data,
+
+		send_amount: send_amount,
+		current_balance: current_balance,
+		available_balance: available_balance,
+		fee_charged: fee_charged,
+		trnx_id: String(trnx_id[0]),
+		ghipps_id: String(ghipps[0]),
+		to_name: String(to_name[0]).substring(3),
+		to_number: String(to_number[0]).substring(20),
+	};
 };
 
 export const check = (data) => {
