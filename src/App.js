@@ -1,6 +1,6 @@
 import "./App.css";
 import { useState, useEffect } from "react";
-import { check } from "./smsExtract(at)";
+import { check } from "./smsExtract(vodafone)";
 
 function App() {
 	const [state, setState] = useState("");
