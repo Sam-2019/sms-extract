@@ -7,12 +7,18 @@ const ref_no_pattern = /(Ref No).?:(\d*)/gim;
 const amount_pattern = /GHS.?.?[0-9]+(.([0-9]+))/gi;
 //eslint-disable-next-line
 const from_pattern = /(from).?(\d*)/gim;
-
+//eslint-disable-next-line
+const ghipps_pattern = /(GHIPSS).?(ID:)(\d*)/gim;
+//eslint-disable-next-line
+const to_name_pattern = /(to)\b.?([a-z]+).?([a-z]+).?([a-z]+).?([a-z]+).?/gim;
+//eslint-disable-next-line
+const to_number_pattern = /(mobile money wallet)\b ([0-9]+)/gim;
 
 const withdrawal = (data) => {
 	console.log({ Withdrawal: data });
 
 	let trnx_id = data.match(trxn_id_pattern);
+
 	let amounts = data.match(amount_pattern);
 	let withdrawal_amount = amounts ? amounts[0] : null;
 	let current_balance = amounts ? amounts[2] : null;
