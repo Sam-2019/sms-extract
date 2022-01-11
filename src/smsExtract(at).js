@@ -51,6 +51,19 @@ const purchase = (data) => {
 
 const send = (data) => {
 	console.log({ Send: data });
+
+	let trnx_id = data.match(trxn_id_pattern);
+	let amounts = data.match(amount_pattern);
+	let send_amount = amounts ? amounts[0] : null;
+	let current_balance = amounts ? amounts[2] : null;
+	let available_balance = amounts ? amounts[3] : null;
+	let fee_charged = amounts ? amounts[1] : null;
+
+	console.log({ send_amount: send_amount });
+	console.log({ current_balance: current_balance });
+	console.log({ available_balance: available_balance });
+	console.log({ fee_charged: fee_charged });
+	console.log({ trnx_id: String(trnx_id[0]) });
 };
 
 export const check = (data) => {
