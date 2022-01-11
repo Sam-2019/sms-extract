@@ -104,7 +104,7 @@ const send = (data) => {
 	console.log({ to_number: String(to_number[0]).substring(20) });
 
 	return {
-		Receipt: data,
+		Send: data,
 
 		send_amount: send_amount,
 		current_balance: current_balance,
