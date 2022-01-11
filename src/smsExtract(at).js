@@ -18,6 +18,7 @@ const withdrawal = (data) => {
 	console.log({ Withdrawal: data });
 
 	let trnx_id = data.match(trxn_id_pattern);
+	let from = data.match(from_pattern);
 
 	let amounts = data.match(amount_pattern);
 	let withdrawal_amount = amounts ? amounts[0] : null;
@@ -30,6 +31,7 @@ const withdrawal = (data) => {
 	console.log({ available_balance: available_balance });
 	console.log({ fee_charged: fee_charged });
 	console.log({ trnx_id: String(trnx_id[0]) });
+	console.log({ from: from ? String(from).substring(5) : null });
 };
 
 const receipt = (data) => {
