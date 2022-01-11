@@ -66,6 +66,39 @@ const withdrawal = (data) => {
 
 const receipt = (data) => {
 	console.log({ Receipt: data });
+
+	let trnx_id = data.match(trxn_id_pattern);
+	let time = data.match(time_pattern);
+	let date = data.match(date_pattern);
+	let reference_no = data.match(ref_no_pattern);
+
+	let from_number = data.match(transfer_from);
+	let from_name = data.match(transfer_name);
+	let amounts = data.match(amount_pattern);
+	let receipt_amount = amounts ? amounts[0] : null;
+	let current_balance = amounts ? amounts[1] : null;
+
+	// console.log({ receipt_amount: receipt_amount });
+	// console.log({ current_balance: current_balance });
+	// console.log({ from_number: from_number ? String(from_number[1]) : null });
+	// console.log({ from_name: from_name ? String(from_name).substring(5) : null });
+	// console.log({ trnx_id: String(trnx_id) });
+	// console.log({ time: time ? String(time) : null });
+	// console.log({ date: date ? String(date).trim() : null });
+	// console.log({ reference_no: String(reference_no).substring(6) });
+
+	return {
+		Receipt: data,
+
+		receipt_amount: receipt_amount,
+		current_balance: current_balance,
+		from_number: from_number ? String(from_number[1]) : null,
+		from_name: from_name ? String(from_name).substring(5) : null,
+		trnx_id: String(trnx_id),
+		time: time ? String(time) : null,
+		date: date ? String(date).trim() : null,
+		reference_no: String(reference_no).substring(6),
+	};
 };
 
 const purchase = (data) => {
