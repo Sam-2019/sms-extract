@@ -59,6 +59,11 @@ const send = (data) => {
 	console.log({ Send: data });
 
 	let trnx_id = data.match(trxn_id_pattern);
+	let ghipps = data.match(ghipps_pattern);
+
+	let to_name = data.match(to_name_pattern);
+	let to_number = data.match(to_number_pattern);
+
 	let amounts = data.match(amount_pattern);
 	let send_amount = amounts ? amounts[0] : null;
 	let current_balance = amounts ? amounts[2] : null;
@@ -70,6 +75,9 @@ const send = (data) => {
 	console.log({ available_balance: available_balance });
 	console.log({ fee_charged: fee_charged });
 	console.log({ trnx_id: String(trnx_id[0]) });
+	console.log({ ghipps_id: String(ghipps[0]) });
+	console.log({ to_name: String(to_name[0]).substring(3) });
+	console.log({ to_number: String(to_number[0]).substring(20) });
 };
 
 export const check = (data) => {
