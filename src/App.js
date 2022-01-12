@@ -1,6 +1,8 @@
 import "./App.css";
 import { useState, useEffect } from "react";
-import { check } from "./smsExtract(vodafone)";
+import { checkVodafone } from "./smsExtract(vodafone)";
+import { checkAirtelTigo } from "./smsExtract(at)";
+import { checkMTN } from "./smsExtract(mtn)";
 
 function App() {
 	const [state, setState] = useState("");
@@ -8,11 +10,27 @@ function App() {
 	const [notify, setNotify] = useState(false);
 	const [data, setData] = useState({});
 
+	const checkNetwork = () => {
+		if (state.startsWith("00000")) {
+			return checkVodafone(state);
+		}
+
+		if (
+			state.startsWith("You have withdrawn") ||
+			state.startsWith("Dear Customer") ||
+			state.startsWith("You have received")
+		) {
+			return checkAirtelTigo(state);
+		}
+
+		return checkMTN(state);
+	};
+
 	const submit = () => {
 		const smsBody = state;
 
 		if (smsBody.length >= 112) {
-			const res = check(smsBody);
+			const res = checkNetwork();
 
 			if (notify === true) {
 				return setData(JSON.stringify(res));
@@ -28,7 +46,7 @@ function App() {
 	const clear = () => {
 		setState("");
 		setOutput(false);
-		setNotify(false)
+		setNotify(false);
 	};
 
 	const handleOnChange = (e) => {
