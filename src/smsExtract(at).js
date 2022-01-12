@@ -117,7 +117,8 @@ const send = (data) => {
 	};
 };
 
-export const check = (data) => {
+export const checkAirtelTigo = (data) => {
+	console.log('AirtelTigo')
 	if (data.includes("You have withdrawn")) {
 		return withdrawal(data);
 	}

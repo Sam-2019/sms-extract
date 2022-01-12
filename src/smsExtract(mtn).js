@@ -119,7 +119,8 @@ const send = (data) => {
 	};
 };
 
-export const check = (data) => {
+export const checkMTN = (data) => {
+	console.log('MTN')
 	if (data.includes("Cash Out")) {
 		return withdrawal(data);
 	}

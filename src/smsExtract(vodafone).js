@@ -171,7 +171,8 @@ const send = (data) => {
 	};
 };
 
-export const check = (data) => {
+export const checkVodafone = (data) => {
+	console.log("Vodafone");
 	if (data.includes("You have withdrawn")) {
 		return withdrawal(data);
 	}
