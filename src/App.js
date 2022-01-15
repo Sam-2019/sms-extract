@@ -1,8 +1,8 @@
 import "./App.css";
 import { useState, useEffect } from "react";
-import { checkVodafone } from "./smsExtract(vodafone)";
-import { checkAirtelTigo } from "./smsExtract(at)";
-import { checkMTN } from "./smsExtract(mtn)";
+import { checkVodafone } from "./smsExtract/vodafone";
+import { checkAirtelTigo } from "./smsExtract/airteltigo";
+import { checkMTN } from "./smsExtract/mtn";
 
 function App() {
 	const [state, setState] = useState("");
