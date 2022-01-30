@@ -3,6 +3,16 @@ import { useState, useEffect } from "react";
 import { checkVodafone } from "./smsExtract/vodafone";
 import { checkAirtelTigo } from "./smsExtract/airteltigo";
 import { checkMTN } from "./smsExtract/mtn";
+import { checkECG } from "./smsExtract/ecg";
+import {
+	identifier_vodafone,
+	withdarawal_airteltigo,
+	customer_airteltigo,
+	receipt_airteltigo,
+	service_charge_ecg,
+	prev_acc_ecg,
+	fire_rural_ecg,
+} from "./smsExtract/constant";
 
 function App() {
 	const [state, setState] = useState("");
@@ -10,20 +20,28 @@ function App() {
 	const [notify, setNotify] = useState(false);
 	const [data, setData] = useState({});
 
-	const checkNetwork = () => {
-		if (state.startsWith("00000")) {
-			return checkVodafone(state);
+	const checkNetwork = (data) => {
+		if (data.startsWith(identifier_vodafone)) {
+			return checkVodafone(data);
 		}
 
 		if (
-			state.startsWith("You have withdrawn") ||
-			state.startsWith("Dear Customer") ||
-			state.startsWith("You have received")
+			data.startsWith(withdarawal_airteltigo) ||
+			data.startsWith(customer_airteltigo) ||
+			data.startsWith(receipt_airteltigo)
 		) {
-			return checkAirtelTigo(state);
+			return checkAirtelTigo(data);
 		}
 
-		return checkMTN(state);
+		if (
+			data.includes(service_charge_ecg) ||
+			data.includes(prev_acc_ecg) ||
+			data.includes(fire_rural_ecg)
+		) {
+			return checkECG(data);
+		}
+
+		return checkMTN(data);
 	};
 
 	const submit = () => {
