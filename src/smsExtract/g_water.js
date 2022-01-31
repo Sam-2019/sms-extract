@@ -41,7 +41,7 @@ const number_pattern = /\d+.?\d+.?\d+/g;
 //eslint-disable-next-line
 const billable_period_pattern = /([A-Z]+)-\d+ /g;
 
-export const checkECG = (data) => {
+export const checGWater = (data) => {
 
   let billable_period = String(data.match(billable_period_pattern)).trim();
   let digits = data.match(number_pattern);

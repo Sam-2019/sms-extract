@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { checkVodafone } from "./smsExtract/vodafone";
 import { checkAirtelTigo } from "./smsExtract/airteltigo";
 import { checkMTN } from "./smsExtract/mtn";
-import { checkECG } from "./smsExtract/ecg";
+import { checGWater } from "./smsExtract/g_water";
 import {
 	identifier_vodafone,
 	withdarawal_airteltigo,
@@ -38,7 +38,7 @@ function App() {
 			data.includes(prev_acc_ecg) ||
 			data.includes(fire_rural_ecg)
 		) {
-			return checkECG(data);
+			return checGWater(data);
 		}
 
 		return checkMTN(data);
