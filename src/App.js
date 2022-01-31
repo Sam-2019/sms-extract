@@ -46,9 +46,9 @@ function App() {
 
 	const submit = () => {
 		const smsBody = state;
-
+	
 		if (smsBody.length >= 112) {
-			const res = checkNetwork();
+			const res = checkNetwork(smsBody);
 
 			if (notify === true) {
 				return setData(JSON.stringify(res));
