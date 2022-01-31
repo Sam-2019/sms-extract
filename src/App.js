@@ -137,7 +137,7 @@ function App() {
 
 				<div className="mt-2 max-w-md">
 					{output && (
-						<div className="rounded-md border border-sky-500 w-full p-2">
+						<div className="rounded-md border border-sky-200 w-full p-2">
 							<p className="text-sm text-gray-500 break-all ">{data}</p>
 
 							<div className="mt-2 flex justify-end content-end">
