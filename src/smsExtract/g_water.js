@@ -1,15 +1,12 @@
 //regex
 //eslint-disable-next-line
-const month_pattern =
-  /([a-zA-Z]+)-([0-9]+).?BILL/gm || /([a-zA-Z]+-[0-9]+).?BILL/gm;
+const month_pattern = /([a-zA-Z]+)-([0-9]+).?BILL/gm || /([a-zA-Z]+-[0-9]+).?BILL/gm;
 //eslint-disable-next-line
-const year_pattern =
-  /([a-zA-Z]+)-([0-9]+).?BILL/gm || /([a-zA-Z]+-[0-9]+).?BILL/gm;
+const year_pattern = /([a-zA-Z]+)-([0-9]+).?BILL/gm || /([a-zA-Z]+-[0-9]+).?BILL/gm;
 //eslint-disable-next-line
 const account_number_pattern = /(ACC).?(#)\:.?([0-9]+\-[0-9]+\-[0-9]+)/gm;
 //eslint-disable-next-line
-const account_name_and_id_pattern =
-  /([A-Z]+ [A-Z]+ ?[A-Z]+ ?[A-Z]+)\-([0-9]+)/gim;
+const account_name_and_id_pattern = /([A-Z]+ [A-Z]+ ?[A-Z]+ ?[A-Z]+)\-([0-9]+)/gim;
 //eslint-disable-next-line
 const prev_usage_pattern = /PREV+\:.?([0-9]+)/gm;
 //eslint-disable-next-line
