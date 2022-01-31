@@ -9,9 +9,9 @@ import {
 	withdarawal_airteltigo,
 	customer_airteltigo,
 	receipt_airteltigo,
-	service_charge_ecg,
-	prev_acc_ecg,
-	fire_rural_ecg,
+	service_charge_g_water,
+	prev_acc_g_water,
+	fire_rural_g_water,
 } from "./smsExtract/constant";
 
 function App() {
@@ -34,9 +34,9 @@ function App() {
 		}
 
 		if (
-			data.includes(service_charge_ecg) ||
-			data.includes(prev_acc_ecg) ||
-			data.includes(fire_rural_ecg)
+			data.includes(service_charge_g_water) ||
+			data.includes(prev_acc_g_water) ||
+			data.includes(fire_rural_g_water)
 		) {
 			return checGWater(data);
 		}
@@ -111,7 +111,7 @@ function App() {
 					/>
 				</div>
 
-				<div>{notify && <p className="py-2">Word count not enough</p>}</div>
+				<div>{notify && <p className="py-2">Word count not enough!</p>}</div>
 
 				<div className="py-2">
 					<button
