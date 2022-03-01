@@ -106,7 +106,7 @@ function App() {
 						value={state}
 						placeholder="Copy and Paste message"
 						onChange={handleOnChange}
-						className="rounded-md border border-sky-500 w-full h-48 p-2 shadow-md "
+						className="rounded-md border border-sky-500 w-full h-48 p-2 shadow-md"
 					/>
 				</div>
 
