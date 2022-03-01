@@ -1,4 +1,3 @@
-import "./App.css";
 import { useState, useEffect } from "react";
 import { checkVodafone } from "./smsExtract/vodafone";
 import { checkAirtelTigo } from "./smsExtract/airteltigo";
