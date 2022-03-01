@@ -40,7 +40,7 @@ const withdrawal = (data) => {
 		current_balance: current_balance,
 		available_balance: available_balance,
 		fee_charged: fee_charged,
-		trnx_id: String(trnx_id[0]),
+		trnx_id: trnx_id ? String(trnx_id[0]) : null,
 		from: from ? String(from).substring(5) : null,
 	};
 };
@@ -69,8 +69,8 @@ const receipt = (data) => {
 		receipt_amount: receipt_amount,
 		current_balance: current_balance,
 		available_balance: available_balance,
-		trnx_id: String(trnx_id[0]),
-		reference_no: String(reference_no[0]),
+		trnx_id: trnx_id ? String(trnx_id[0]) : null,
+		reference_no: reference_no ? String(reference_no[0]) : null,
 		from: from ? `0${String(from).substring(5)}` : null,
 	};
 };
@@ -110,15 +110,15 @@ const send = (data) => {
 		current_balance: current_balance,
 		available_balance: available_balance,
 		fee_charged: fee_charged,
-		trnx_id: String(trnx_id[0]),
-		ghipps_id: String(ghipps[0]),
-		to_name: String(to_name[0]).substring(3),
-		to_number: String(to_number[0]).substring(20),
+		trnx_id: trnx_id ? String(trnx_id[0]) : null,
+		ghipps_id: ghipps ? String(ghipps[0]) : null,
+		to_name: to_name ? String(to_name[0]).substring(3) : null,
+		to_number: to_number ? String(to_number[0]).substring(20) : null,
 	};
 };
 
 export const checkAirtelTigo = (data) => {
-	console.log('AirtelTigo')
+	console.log("AirtelTigo");
 	if (data.includes("You have withdrawn")) {
 		return withdrawal(data);
 	}

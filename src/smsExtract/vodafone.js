@@ -56,7 +56,7 @@ const withdrawal = (data) => {
 
 		withdrawal_amount: withdrawal_amount,
 		current_balance: current_balance,
-		trnx_id: String(trnx_id[0]),
+		trnx_id: trnx_id ? String(trnx_id[0]) : null,
 		from_number: from_number ? String(from_number).substring(5) : null,
 		from_name: from_name ? String(from_name).substring(3) : null,
 		time: time ? String(time) : null,
@@ -94,10 +94,10 @@ const receipt = (data) => {
 		current_balance: current_balance,
 		from_number: from_number ? String(from_number[1]) : null,
 		from_name: from_name ? String(from_name).substring(5) : null,
-		trnx_id: String(trnx_id),
+		trnx_id: trnx_id ? String(trnx_id) : null,
 		time: time ? String(time) : null,
 		date: date ? String(date).trim() : null,
-		reference_no: String(reference_no).substring(6),
+		reference_no: reference_no ? String(reference_no).substring(6) : null,
 	};
 };
 
@@ -126,7 +126,7 @@ const purchase = (data) => {
 	return {
 		purchase_amount: purchase_amount,
 		current_balance: current_balance,
-		trnx_id: String(trnx_id[0]),
+		trnx_id: trnx_id ? String(trnx_id[0]) : null,
 		time: time ? String(time) : null,
 		date: date ? String(date).trim() : null,
 		for_number: for_number ? String(for_number).substring(4) : null,
@@ -159,7 +159,7 @@ const send = (data) => {
 	// console.log({ reference: String(reference).substring(11) });
 
 	return {
-		trnx_id: String(trnx_id),
+		trnx_id: trnx_id ? String(trnx_id) : null,
 		to_number: to_number ? String(to_number).substring(3) : null,
 		to_name: to_name ? to_name[3] : null,
 		time: time ? String(time) : null,
@@ -167,7 +167,7 @@ const send = (data) => {
 		sent_amount: sent_amount,
 		fee_charged: fee_charged,
 		current_balance: current_balance,
-		reference: String(reference).substring(11),
+		reference: reference ? String(reference).substring(11) : null,
 	};
 };
 

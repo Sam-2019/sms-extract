@@ -21,20 +21,20 @@ const messsage_pattern =
 const withdrawal = (data) => {
 	let amounts = data.match(amount_pattern);
 
-	let trnx_id = data.match(trxn_id_pattern);
 	let withdrawal_amount = amounts ? amounts[0] : null;
 	let current_balance = amounts ? amounts[1] : null;
 	let fee_charged = amounts ? amounts[2] : null;
 	let payment_to = data.match(to_pattern);
+	let trnx_id = data.match(trxn_id_pattern);
 
 	return {
 		Withdrawal: data,
 
-		trnx_id: String(trnx_id[0]).slice(16),
 		withdrawal_amount: withdrawal_amount,
 		current_balance: current_balance,
 		fee_charged: fee_charged,
-		to: String(payment_to).slice(7),
+		to: payment_to ? String(payment_to).slice(7) : null,
+		trnx_id: trnx_id ? String(trnx_id[0]).slice(16) : null,
 	};
 };
 
@@ -54,7 +54,7 @@ const receipt = (data) => {
 		receipt_amount: receipt_amount,
 		current_balance: current_balance,
 		available_balance: available_balance,
-		trnx_id: String(trnx_id[0]).slice(16),
+		trnx_id: trnx_id ? String(trnx_id[0]).slice(16) : null,
 		from: from ? String(from).substring(9) : null,
 		message: message ? String(message).substring(8) : null,
 	};
@@ -63,13 +63,9 @@ const receipt = (data) => {
 const purchase = (data) => {
 	let amounts = data.match(amount_pattern);
 
-	if (amounts === null) {
-		return;
-	}
-
-	let purchase_amount = amounts[0];
-	let new_balance = amounts[1];
-	let fee_charged = amounts[2];
+	let purchase_amount = amounts ? amounts[0] : null;
+	let new_balance = amounts ? amounts[1] : null;
+	let fee_charged = amounts ? amounts[2] : null;
 	let trnx_id = data.match(trxn_id_pattern);
 	let payment_to = data.match(to_pattern);
 	let reference = data.match(reference_pattern);
@@ -79,12 +75,12 @@ const purchase = (data) => {
 	return {
 		Purchase: data,
 
-		trnx_id: String(trnx_id[0]).slice(16),
 		purchase_amount: purchase_amount,
 		current_balance: new_balance,
 		fee_charged: fee_charged,
-		to: String(payment_to).slice(7),
-		reference: String(reference).substring(11),
+		trnx_id: trnx_id ? String(trnx_id[0]).slice(16) : null,
+		to: payment_to ? String(payment_to).slice(7) : null,
+		reference: reference ? String(reference).substring(11) : null,
 		time: time ? String(time) : null,
 		date: date ? String(date).substring(3).trim() : null,
 	};
@@ -92,25 +88,26 @@ const purchase = (data) => {
 
 const send = (data) => {
 	let amounts = data.match(amount_pattern);
+
+	let send_amount = amounts ? amounts[0] : null;
+	let current_balance = amounts ? amounts[1] : null;
+	let available_balance = amounts ? amounts[2] : null;
+	let fee_charged = amounts ? amounts[3] : null;
 	let trnx_id = data.match(trxn_id_pattern);
 	let payment_to = data.match(to_pattern);
 	let reference = data.match(reference_pattern);
 	let time = data.match(time_pattern);
 	let date = data.match(date_pattern);
-	let send_amount = amounts ? amounts[0] : null;
-	let current_balance = amounts ? amounts[1] : null;
-	let available_balance = amounts ? amounts[2] : null;
-	let fee_charged = amounts ? amounts[3] : null;
 
 	return {
 		Send: data,
 
-		trnx_id: String(trnx_id[0]).slice(16),
 		send_amount: send_amount,
 		current_balance: current_balance,
 		available_balance: available_balance,
 		fee_charged: fee_charged,
-		reference: String(reference).substring(11),
+		trnx_id: trnx_id ? String(trnx_id[0]).slice(16) : null,
+		reference: reference ? String(reference).substring(11) : null,
 		time: String(time).length < 8 ? null : String(time),
 		date: String(date).length < 10 ? null : String(date).substring(3).trim(),
 		to: String(payment_to).includes("-")
@@ -120,7 +117,7 @@ const send = (data) => {
 };
 
 export const checkMTN = (data) => {
-	console.log('MTN')
+	console.log("MTN");
 	if (data.includes("Cash Out")) {
 		return withdrawal(data);
 	}
