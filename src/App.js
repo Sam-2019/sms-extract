@@ -45,7 +45,7 @@ function App() {
 
 	const submit = () => {
 		const smsBody = state;
-	
+
 		if (smsBody.length >= 112) {
 			const res = checkNetwork(smsBody);
 
