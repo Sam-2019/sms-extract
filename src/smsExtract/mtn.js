@@ -4,8 +4,7 @@ const trxn_id_pattern = /Transaction I(d|D): \d+/gm;
 //eslint-disable-next-line
 const amount_pattern = /GHS ?[0-9]+.[0-9]+?./gm || /GHS.?[0-9]+(.([0-9]+))/gi;
 //eslint-disable-next-line
-const from_pattern =
-	/.[0-9]+.?from.?([a-z]+.?[a-z]+.?[a-z]+.?[a-z]+.?[a-z]+.?[a-z]+)/gim;
+const from_pattern = /.[0-9]+.?from.?([a-z]+.?[a-z]+.?[a-z]+.?[a-z]+.?[a-z]+.?[a-z]+)/gim;
 //eslint-disable-next-line
 const to_pattern = /\.[0-9]+.?to.?\-?\W?(\w+.?\w+.?\w+.?[A-Zz]+.?)?/gim;
 //eslint-disable-next-line
@@ -15,8 +14,7 @@ const date_pattern = /at ([0-9]*\-[0-9]*\-[0-9]* )/gim;
 //eslint-disable-next-line
 const time_pattern = /(([0-9]+\:[0-9]+\:[0-9]+)\.)/gim;
 //eslint-disable-next-line
-const messsage_pattern =
-	/Message:Interest.?[a-z]+.?(\w+)?.(\w+)?.(\w+)?.([0-9]+)?/g;
+const messsage_pattern = /Message:Interest.?[a-z]+.?(\w+)?.(\w+)?.(\w+)?.([0-9]+)?/g;
 
 const withdrawal = (data) => {
 	let amounts = data.match(amount_pattern);
@@ -88,11 +86,16 @@ const purchase = (data) => {
 
 const send = (data) => {
 	let amounts = data.match(amount_pattern);
+	console.log(amounts);
+
+	if (data.includes("INTEROPERABILITY PUSH")) {
+	}
+	console.log(data);
 
 	let send_amount = amounts ? amounts[0] : null;
 	let current_balance = amounts ? amounts[1] : null;
-	let available_balance = amounts ? amounts[2] : null;
-	let fee_charged = amounts ? amounts[3] : null;
+	let available_balance = amounts.length > 3 ? amounts[2] : amounts[1];
+	let fee_charged = amounts.length > 3 ? amounts[3] : amounts[2];
 	let trnx_id = data.match(trxn_id_pattern);
 	let payment_to = data.match(to_pattern);
 	let reference = data.match(reference_pattern);
