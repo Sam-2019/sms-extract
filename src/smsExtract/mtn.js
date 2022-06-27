@@ -86,6 +86,11 @@ const purchase = (data) => {
 
 const send = (data) => {
 	let amounts = data.match(amount_pattern);
+	console.log(amounts);
+
+	if (data.includes("INTEROPERABILITY PUSH")) {
+	}
+	console.log(data);
 
 	let send_amount = amounts ? amounts[0] : null;
 	let current_balance = amounts ? amounts[1] : null;
